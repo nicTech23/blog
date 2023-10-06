@@ -141,7 +141,7 @@ const businessSpecific = async (req, res) => {
 
 const recentPost = async (req, res)=>{
     try {
-        const recentPost = await PostModel.find({}).sort({publishdate: -1}).limit(2)
+        const recentPost = await PostModel.find({}).sort({publishdate: -1}).limit(10)
         res.json(recentPost)
     } catch (error) {
         res.status(403).send("request not found")
