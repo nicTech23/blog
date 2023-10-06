@@ -12,6 +12,8 @@ import Sports from './component/category/Sports/Sports';
 import Entertainment from './component/category/Entertainment/Entertainment';
 import Business from './component/category/Business/Business';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import Login from './component/author/Login';
+import Register from './component/author/Register';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
   {
     path: '/entertainment',
     element: <Entertainment/>
+  },
+  {
+    path: '/authorlogin',
+    element: <Login/>
+  },
+  {
+    path: '/authorregister',
+    element: <Register/>
   },
 ])
 
