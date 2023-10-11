@@ -16,7 +16,8 @@ const {
     entertainmentSpecific,
     businessSpecific,
     business,
-    recentPost
+    recentPost,
+    authorLogin
 } = require('../controller/appContoller')
 
 //post 
@@ -24,7 +25,9 @@ route.post('/createblog/', createPost)
 
 route.post('/createcomment/', createcomment)
 
-route.post('/creatauthor/', createAuthor )
+route.post('/createauthor/', createAuthor )
+
+route.post('/authorlogin/',  authorLogin)
 
 /**********************************************
 route.post('/createcategory/:postId', (req, res)=>{

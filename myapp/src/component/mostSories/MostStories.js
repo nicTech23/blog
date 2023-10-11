@@ -1,16 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import Swipe from '../swiper/Swipe'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetctRecentPost } from './../redux/createSlice/RecentPostSlice';
 
 const MostStories = () => {
+    const data = useSelector((state)=>state.recentPost.data)
+    const status = useSelector((state)=>state.recentPost.status)
+    const dispatch = useDispatch()
+    console.log(status)
+    console.log(data)
+
+    useEffect(()=>{
+        if(status === 'idle'){
+            dispatch(fetctRecentPost())
+        }
+    },[status, dispatch])
+
   return (
-      <div>
+      <div >
         <Swipe/>
-        <Card className='p-10' sx={{background:'#f4f4f4'}}>
+        
+        {/**Recent Post */}
+        {data.map((post) => {
+           return (
+            <Card key={post._id} className='p-10' sx={{background:'#f4f4f4'}}>
             <Box className='flex justify-between items-center text-xs text-gray-400'>
                 <div>
-                    <span>24 hours ago</span>
+                    <span>24 hours</span>
                 </div>
                 <div className='flex'>
                     <span className='mr-5'>National</span>
@@ -44,6 +61,9 @@ const MostStories = () => {
                 </CardActionArea>
             </Card>
         </Card>
+           ) 
+        })}
+        
     </div>
 
   )
