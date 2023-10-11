@@ -3,6 +3,7 @@ import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@
 import Swipe from '../swiper/Swipe'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetctRecentPost } from './../redux/createSlice/RecentPostSlice';
+import Category from './../category/Category';
 
 const MostStories = () => {
     const data = useSelector((state)=>state.recentPost.data)
@@ -30,14 +31,14 @@ const MostStories = () => {
                     <span>24 hours</span>
                 </div>
                 <div className='flex'>
-                    <span className='mr-5'>National</span>
-                    <span className='mr-5'>News</span>
-                    <span className='mr-7'>Politics</span>
+                    {post.category[0].specific.map((specific)=>{
+                       return <span className='mr-5'>{specific}</span>
+                    })}
                 </div>
             </Box>
 
             <Box className='mt-5'>
-                <span className='text-xl font-sans font-bold'> IT system is solid: NPP Can't much us in 2024 - Oman Boamah</span>
+                <span className='text-xl font-sans font-bold'>{post.title}</span>
             </Box>
             <Card className='w-full mt-5 rounded-xl'>
                 <CardActionArea>
@@ -49,13 +50,9 @@ const MostStories = () => {
                     <CardContent sx={{height:'150px'}}>
                     <Box className='flex flex-col'>
                         <span className='text-xs text-gray-500 capitalize'>
-                        Source: Oppong nicholas
+                        Source: {post.author.firstname} {post.author.lastname}
                         </span>
-                        <span className='font-sans text-sm mt-5'>
-                        Lizards are a widespread group of squamate reptiles, with over 6,000
-                        species, ranging across all continents except Antarctica Lizards are 
-                        a widespread group of squamate reptiles, with over 6,000
-                        </span>
+                        <span className='font-sans text-sm mt-5'>{post.content}</span>
                     </Box>
                     </CardContent>
                 </CardActionArea>
