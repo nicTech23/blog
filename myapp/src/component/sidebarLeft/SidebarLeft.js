@@ -12,9 +12,8 @@ import { Box } from '@mui/material';
 
 const SidebarLeft = () => {
   return (
-    <Box className='bg-white w-2/12'>
-    <div className='h-screen fixed'>
-      <div className='text-2xl text-red-500 font-sans font-black mb-5'>Logo</div>
+    <Box className='bg-white lg:w-2/12 h-screen' sx={{display:{xs:'none', lg:'block'}}}>
+    <div className='lg:flex flex-col w-full'>
         <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='News' className='News' />
         <SidebarLink icon = {<GavelIcon style={{fontSize:'18px'}}/>}  text='Politic' className='Politics'  />
         <SidebarLink icon = {<BusinesslIcon style={{fontSize:'18px'}}/>}  text='Business' className='Business'  />
