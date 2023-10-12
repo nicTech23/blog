@@ -7,13 +7,14 @@ import Boxing from './Boxing'
 import Athletics from './Athletics'
 import Tennis from './Tennis'
 import Others from './Others'
+import SidebarRight from '../../sidebarRight/SidebarRight'
 
 const Sports = () => {
   return (
     <div className='w-full'>
       <Header2/>
-      <Box className ='flex  flex-row ml-10 mr-10 space-x-4'>
-        <Box className='w-3/4'>
+      <Box className ='flex flex-row ml-10 mr-10 space-x-4'>
+        <Box className='w-3/4 sm:w-full'>
 
           <Box className='mb-10 cursor-pointer'>
             <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>FootBall</div>
@@ -46,7 +47,7 @@ const Sports = () => {
           </Box>
           
         </Box>
-        <SidebarRight2/>
+        <SidebarRight/>
       </Box>
     </div>
   )
