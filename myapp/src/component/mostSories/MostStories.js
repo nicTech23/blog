@@ -25,39 +25,6 @@ const MostStories = () => {
         <Box className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2">
         {data.map((post) => {
            return (
-<<<<<<< HEAD
-            <Card key={post._id} className='p-10' sx={{background:'#f4f4f4'}}>
-            <Box className='flex justify-between items-center text-xs text-gray-400'>
-                <div>
-                    <span>24 hours</span>
-                </div>
-                <div className='flex'>
-                    {post.category[0].specific.map((specific)=>{
-                       return <span className='mr-5'>{specific}</span>
-                    })}
-                </div>
-            </Box>
-
-            <Box className='mt-5'>
-                <span className='text-xl font-sans font-bold'>{post.title}</span>
-            </Box>
-            <Card className='w-full mt-5 rounded-xl'>
-                <CardActionArea>
-                    <CardMedia sx={{height: '300px', objectFit:"fill"}}
-                    component="img"
-                    image="https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg"
-                    alt="green iguana"
-                    />
-                    <CardContent sx={{height:'150px'}}>
-                    <Box className='flex flex-col'>
-                        <span className='text-xs text-gray-500 capitalize'>
-                        Source: {post.author.firstname} {post.author.lastname}
-                        </span>
-                        <span className='font-sans text-sm mt-5'>{post.content}</span>
-                    </Box>
-                    </CardContent>
-                </CardActionArea>
-=======
                 <Card key={post._id} className='mt-5' sx={{background:'#f4f4f4', sm:{padding:'1.5rem', lg:{padding:'2.5rem'}}}}>
                 <Box className='flex justify-between items-center text-xs text-gray-400'>
                     <div>
@@ -94,7 +61,6 @@ const MostStories = () => {
                         </CardContent>
                     </CardActionArea>
                 </Card>
->>>>>>> work
             </Card>
            ) 
         })}

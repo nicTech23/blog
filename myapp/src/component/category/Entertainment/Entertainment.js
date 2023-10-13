@@ -1,11 +1,11 @@
 import React from 'react'
 import { Box } from '@mui/material';
-import SidebarRight2 from '../../sidebarRight/SidebarRight2';
 import Header2 from '../../header/Header2';
 import Movie from './Movie';
 import Music from './Music';
 import RadioTV from './RadioTV';
 import Stage from './Stage';
+import SidebarRight from '../../sidebarRight/SidebarRight';
 
 const Entertainment = () => {
   return (
@@ -38,7 +38,7 @@ const Entertainment = () => {
             <Stage/>
           </Box>
         </Box>
-        <SidebarRight2/>
+        <SidebarRight/>
       </Box>
     </div>
   )
