@@ -11,7 +11,6 @@ import SidebarRight from '../../sidebarRight/SidebarRight'
 const Sports = () => {
   return (
     <div className='' sx={{width:"100%"}}>
-      <Header2/>
       <Box className ='flex flex-row pr-5 pl-5 space-x-4' sx={{width:"100%"}} >
         <Box className='w-3/4 sm:w-full' sx={{width:{xs:'100%'}}}>
 

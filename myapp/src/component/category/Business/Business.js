@@ -10,46 +10,46 @@ import Investment from './Investment'
 import RealEstate from './RealEstate'
 import Agric from './Agric'
 import Banking from './Banking';
+import SidebarRight from '../../sidebarRight/SidebarRight'
 
 const Business = () => {
   return (
-    <div className=''>
-      <Header2/>
-      <Box className ='flex  flex-row ml-10 mr-10 space-x-4'>
-        <Box className='w-3/4'>
+    <div className='' sx={{width:"100%"}}>
+      <Box className ='flex flex-row pr-5 pl-5 space-x-4' sx={{width:"100%"}} >
+        <Box className='w-3/4 sm:w-full' sx={{width:{xs:'100%'}}}>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Economy</div>
+        <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Economic</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Economic/>
           </Box>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Energy</div>
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Energy</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Energy/>
           </Box>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Finance</div>
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Energy</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Finance/>
+            <Energy/>
           </Box>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Mining</div>
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Mining</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Mining/>
           </Box>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Investment</div>
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Investment</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Investment/>
           </Box>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Real Estate</div>
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>RealEstate</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <RealEstate/>
           </Box>
@@ -60,13 +60,13 @@ const Business = () => {
             <Agric/>
           </Box>
 
-          <Box className='mb-10 cursor-pointer'>
-            <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Banking</div>
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>FootBall</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Banking/>
           </Box>
         </Box>
-        <SidebarRight2/>
+        <SidebarRight/>
       </Box>
     </div>
   )

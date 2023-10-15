@@ -9,9 +9,7 @@ const MostStories = () => {
     const data = useSelector((state)=>state.recentPost.data)
     const status = useSelector((state)=>state.recentPost.status)
     const dispatch = useDispatch()
-    console.log(status)
-    console.log(data)
-
+    
     useEffect(()=>{
         if(status === 'idle'){
             dispatch(fetctRecentPost())

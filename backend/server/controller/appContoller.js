@@ -8,13 +8,14 @@ const secret = require('../config')
 // Post Routes 
 // ___/createblog/___
 const createPost = async (req, res)=>{
-    const {title, content, image, category, author} = await req.body
+    const {title, content, image, category, author, topstory} = await req.body
     
     await PostModel.create({
        title,
        content,
        image,
-       category
+       category,
+       topstory
     }).then((post) =>{
        AutherModel.findOne({username:author}).then((data) =>{
            post.author = data._id
@@ -98,6 +99,10 @@ const authorLogin = async (req, res)=>{
 }
 
 // Get Routes 
+// ___//___
+
+
+// Get Routes 
 // ___/news/___
 
 const news = async (req, res) => {
@@ -118,8 +123,8 @@ const newsSpecific = async (req, res) => {
 // ___/sports/___
 
 const sports = async (req, res) => {
-    const sport = await PostModel.find({"category.name":"news"})
-    res.json(sport)
+    const sports = await PostModel.find({"category.name":"sports"})
+    res.json(sports)
 }
 
 // Get Routes 

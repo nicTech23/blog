@@ -3,7 +3,7 @@ import React from 'react'
 
 const Stage = () => {
   return (
-    <Box className='w-full grid grid-cols-4 gap-4'>
+<Box className='w-full grid lg:grid-cols-4 gap-4 sm:grid-cols-2'>
     <Box className='bg-gray-200 h-64 overflow-hidden hover:bg-red-600 hover:text-white trasnsition ease-in-out'>
       <CardMedia className=''sx={{height:170, objectFit:'cover'}}
                   component="img"

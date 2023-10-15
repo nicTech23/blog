@@ -51,6 +51,7 @@ route.get('/news/', news )
 route.get('/news/:specific', newsSpecific)
 
 
+route.get('/postdata/', )
 
 route.get('/sports/', sports)
 

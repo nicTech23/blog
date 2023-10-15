@@ -14,6 +14,7 @@ import Business from './component/category/Business/Business';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Login from './component/author/Login';
 import Register from './component/author/Register';
+import Header2 from './component/header/Header2';
 
 const router = createBrowserRouter([
   {
@@ -46,10 +47,10 @@ const router = createBrowserRouter([
   },
 ])
 
-
 function App() {
   return (
     <div>
+      <Header2/>
       <RouterProvider router={router}/>
     </div>
   );
