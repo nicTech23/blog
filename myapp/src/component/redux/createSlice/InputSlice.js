@@ -13,7 +13,7 @@ const initialState = {
     login:{
         email:'',
         password:''
-    }
+    },
 
 }
 
@@ -28,7 +28,7 @@ const registerSlice = createSlice({
         Login:(state, action)=>{
             const fillName = action.payload.name
             state[fillName] = action.payload.value
-        }
+        },
     }
 })
 

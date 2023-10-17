@@ -139,7 +139,7 @@ const sportsSpecific = async (req, res) => {
 // Get Routes 
 // ___/entertainment/___
 const entertainment =  async (req, res) => {
-    const entertainment = await PostModel.find({"category.name":"news"})
+    const entertainment = await PostModel.find({"category.name":"entertainment"})
     res.json(entertainment)
 }
 
@@ -155,7 +155,7 @@ const entertainmentSpecific = async (req, res) => {
 // Get Routes 
 // ___/business/___
 const business = async (req, res) => {
-    const business = await PostModel.find({"category.name":"news"})
+    const business = await PostModel.find({"category.name":"business"})
     res.json(business)
 }
 

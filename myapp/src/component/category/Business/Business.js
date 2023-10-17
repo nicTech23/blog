@@ -37,6 +37,12 @@ const Business = () => {
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Finance</Box>
+            <hr className='border-b-1 border-red-600 mb-3'/>
+            <Finance/>
+          </Box>
+
+          <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Mining</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Mining/>
@@ -61,7 +67,7 @@ const Business = () => {
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
-            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>FootBall</Box>
+            <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Banking</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
             <Banking/>
           </Box>
