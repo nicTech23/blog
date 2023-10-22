@@ -9,9 +9,9 @@ const secret = require('../config')
 // ___/createblog/___
 const createPost = async (req, res)=>{
     const {title, content, image, category, author, topstory} = await req.body
-    
+    const newTitle = title.split(' ').join('-')
     await PostModel.create({
-       title,
+       title: newTitle,
        content,
        image,
        category,
@@ -159,6 +159,7 @@ const business = async (req, res) => {
     res.json(business)
 }
 
+
 // Get Routes 
 // ___/business:specific/___
 const businessSpecific = async (req, res) => {
@@ -168,8 +169,20 @@ const businessSpecific = async (req, res) => {
 }
 
 // Get Routes 
-// ___/recentpost/___
+// ___/singledata/:category/:title/___
+const singledata = async (req, res) => {
+    const {category, title} = req.params
+    await PostModel.find({"category.name":category})
+        .then((response)=>{
+           const data = response.filter(data => data.title === title)
+           return res.json({title: data[0].title, image:data[0].image,
+             content:data[0].content, id: data[0]._id, comment:data[0].comment})
+        })
+        .catch(err => res.status(501).json(err.message))
+}
 
+// Get Routes 
+// ___/recentpost/___
 const recentPost = async (req, res)=>{
     try {
         const recentPost = await PostModel.find({}).populate('author').sort({publishdate: -1}).limit(10)
@@ -192,5 +205,6 @@ module.exports = {
     business,
     businessSpecific, 
     recentPost,
-    authorLogin
+    authorLogin,
+    singledata
 }

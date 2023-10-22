@@ -14,17 +14,17 @@ const SidebarLeft = () => {
   return (
     <Box className='bg-white lg:w-2/12 h-screen' sx={{display:{xs:'none', lg:'block'}}}>
     <div className='lg:flex flex-col w-full'>
-        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='News' className='News' />
-        <SidebarLink icon = {<GavelIcon style={{fontSize:'18px'}}/>}  text='Politic' className='Politics'  />
-        <SidebarLink icon = {<BusinesslIcon style={{fontSize:'18px'}}/>}  text='Business' className='Business'  />
-        <SidebarLink icon = {<SportsKabaddilIcon style={{fontSize:'18px'}}/>}  text='Entertainments' className='Entertainments'  />
-        <SidebarLink icon = {<SportsBaseballlIcon style={{fontSize:'18px'}}/>}  text='Sport' className='Sport'  />
-        <SidebarLink icon = {<LocalHospitalIcon style={{fontSize:'18px'}}/>}  text='Health' className='Health'  />
-        <SidebarLink icon = {<BiotechlIcon style={{fontSize:'18px'}}/>}  text='Technology' className='Technology'  />
-        <SidebarLink icon = {<Diversity3Icon style={{fontSize:'18px'}}/>}  text='Opinion' className='Opinion' />
-        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='Lifestyle'  className='Lifestyle' />
-        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='Gallery' className='Gallery'  />
-        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='Obituary' className='Obituary'  />
+        <SidebarLink  icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='News' link='news' className='News' />
+        <SidebarLink icon = {<GavelIcon style={{fontSize:'18px'}}/>}  text='Politic' link='politics' className='Politics'  />
+        <SidebarLink icon = {<BusinesslIcon style={{fontSize:'18px'}}/>}  text='Business' link='business' className='Business'  />
+        <SidebarLink icon = {<SportsKabaddilIcon style={{fontSize:'18px'}}/>}  text='Entertainments' link='intertainment' className='Entertainments'  />
+        <SidebarLink icon = {<SportsBaseballlIcon style={{fontSize:'18px'}}/>}  text='Sport' link='sport' className='Sport'  />
+        <SidebarLink icon = {<LocalHospitalIcon style={{fontSize:'18px'}}/>}  text='Health' link='health' className='Health'  />
+        <SidebarLink icon = {<BiotechlIcon style={{fontSize:'18px'}}/>}  text='Technology' link='technology' className='Technology'  />
+        <SidebarLink icon = {<Diversity3Icon style={{fontSize:'18px'}}/>}  text='Opinion' link='opinion' className='Opinion' />
+        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='Lifestyle' link='lifestyle'  className='Lifestyle' />
+        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='Gallery' link='gallery' className='Gallery'  />
+        <SidebarLink icon = {<FeedIcon style={{fontSize:'18px'}}/>}  text='Obituary' link='obituary' className='Obituary'  />
       </div>
     </Box>
   )

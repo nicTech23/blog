@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     element: <Register/>
   },
   {
-    path: '/single',
+    path: '/:category/:title/',
     element: <SinglePage/>
   },
 ])

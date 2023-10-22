@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import Swipe from '../swiper/Swipe'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetctRecentPost } from './../redux/createSlice/RecentPostSlice';
-import Category from './../category/Category';
+import { Link } from 'react-router-dom';
+
 
 const MostStories = () => {
     const data = useSelector((state)=>state.recentPost.data)
@@ -16,15 +17,18 @@ const MostStories = () => {
         }
     },[status, dispatch])
 
+
   return (
       <Box className='w-full'>
         <Swipe/>
         {/**Recent Post */}
         <Box className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2">
         {data.map((post) => {
+            let url = `/${post.category[0].name}/${post.title}`
            return (
-                <Card key={post._id} className='mt-5' sx={{background:'#f4f4f4', sm:{padding:'1.5rem', lg:{padding:'2.5rem'}}}}>
-                <Box className='flex justify-between items-center text-xs text-gray-400'>
+                <Link key={post._id} to={url}>
+                <Card className='mt-5' sx={{background:'#f4f4f4', sm:{padding:'1.5rem', lg:{padding:'2.5rem'}}}}>
+                <Box  className='flex justify-between items-center text-xs text-gray-400'>
                     <div>
                         <span>24 hours</span>
                     </div>
@@ -60,6 +64,7 @@ const MostStories = () => {
                     </CardActionArea>
                 </Card>
             </Card>
+            </Link>
            ) 
         })}
 

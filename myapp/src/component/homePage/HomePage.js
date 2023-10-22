@@ -55,7 +55,7 @@ const HomePage = () => {
                 width:{xs:"70%", lg:"384px"}
               }}>
                 <input type='text'  className='text-black w-80  outline-0'/>
-                <span  className='cursor-pointer'>Search</span>
+                <span  className='cursor-pointer font-bol'>Search</span>
               </Box>
           </Toolbar>
         </AppBar>

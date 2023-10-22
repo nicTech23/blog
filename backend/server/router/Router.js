@@ -17,7 +17,8 @@ const {
     businessSpecific,
     business,
     recentPost,
-    authorLogin
+    authorLogin,
+    singledata
 } = require('../controller/appContoller')
 
 //post 
@@ -65,7 +66,10 @@ route.get('/business/', business)
 
 route.get('/business/:specific', businessSpecific)
 
+
 route.get('/recentpost/', recentPost )
+
+route.get('/singledata/:category/:title/', singledata )
 
 
 module.exports = route

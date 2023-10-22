@@ -2,8 +2,36 @@ import { Avatar, Box, Button, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 import Cardbox from './Cardbox'
 import SidebarRight from './../sidebarRight/SidebarRight';
+import { useParams } from 'react-router-dom';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { singleDataAction } from './../redux/createSlice/singleData';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 const SinglePage = () => {
+
+  const data = useSelector((state)=> state.singleData)
+  const status = useSelector((state)=> state.singleData.status)
+  const dispatch = useDispatch()
+   
+
+  const GetData = createAsyncThunk('singlePost/fetch', async()=>{
+    const response = axios.get(`http://localhost:8080/api/v1/${category}/${title}`)
+    return response
+  })
+
+  const {category, title} = useParams()
+  
+  if(status === 'idle'){
+    axios.get(`http://localhost:8080/api/v1/singledata/${category}/${title}`)
+    .then((response)=>{
+      dispatch(singleDataAction.singleData(response))
+      console.log(data, status)
+    })
+  }
+
   return (
     <Box className='w-full flex flex-row justify-center pl-40 pr-40 sm:pl-0 sm:pr-0'sx={{paddingLeft:{xs:'2px', lg:'10rem'}, paddingRight:{xs:'2px', lg:'10rem'}}} > 
         <Box className='w-2/3 pr-10 sm:pr-5 sm:w-full' sx={{paddingLeft:{xs:'2px'}, paddingRight:{xs:'2px', lg:"2.5rem"}, width:{xs:'90%', lg:"100%"}}}>
