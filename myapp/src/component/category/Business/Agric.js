@@ -14,7 +14,7 @@ const Agric = () => {
   //Function to get only agricultural stories
   const agriculturalObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("agricultural")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("agricultural")&&category.name === 'business'));
     }
   }
   

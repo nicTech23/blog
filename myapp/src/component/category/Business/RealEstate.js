@@ -14,7 +14,7 @@ const RealEstate = () => {
   //Function to get only reealestate stories
   const reealestateObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("reealestate")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("reealestate")&&category.name === 'business'));
     }
   }
   

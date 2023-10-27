@@ -13,7 +13,7 @@ const Stage = () => {
   //Function to get only stage stories
   const stageObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("stage")&&category.name === 'entertainment'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("stage")&&category.name === 'entertainment'));
     }
   }
   

@@ -12,7 +12,7 @@ const Athletics = () => {
   
   const athleticsObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("athletics")&&category.name === 'sports'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("athletics")&&category.name === 'sports'));
     }
   }
   

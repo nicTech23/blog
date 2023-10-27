@@ -13,7 +13,7 @@ const International = () => {
   //Function to get only international stories
   const internationalObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("international")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("international")&& category.name === 'news'));
     }
   }
   

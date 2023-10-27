@@ -15,7 +15,7 @@ const Others = () => {
   //Function to get only others stories
   const othersObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("others")&&category.name === 'sports'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("others")&&category.name === 'sports'));
     }
   }
   

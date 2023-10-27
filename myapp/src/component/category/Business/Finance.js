@@ -14,7 +14,7 @@ const Finance = () => {
   //Function to get only finance stories
   const financeObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("finance")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("finance")&&category.name === 'business'));
     }
   }
   

@@ -13,7 +13,7 @@ const Polictics = () => {
   //Function to get only politics stories
   const politicsObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("politics")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("politics")&& category.name === 'news'));
     }
   }
   

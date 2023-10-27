@@ -13,7 +13,7 @@ const Regional = () => {
   //Function to get only regional stories
   const regionalObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("regional")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("regional")&& category.name === 'news'));
     }
   }
   

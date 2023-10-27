@@ -12,7 +12,7 @@ const Education = () => {
    //Function to get only education stories
    const educationObjects = ()=>{
      if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("education")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("education")&& category.name === 'news'));
      }
    }
    

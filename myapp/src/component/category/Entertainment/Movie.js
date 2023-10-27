@@ -13,7 +13,7 @@ const Movie = () => {
   //Function to get only movie stories
   const movieObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("movie")&&category.name === 'entertainment'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("movie")&&category.name === 'entertainment'));
     }
   }
   

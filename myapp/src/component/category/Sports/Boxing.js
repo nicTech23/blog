@@ -13,7 +13,7 @@ const Boxing = () => {
   //Function to get only boxing stories and it return array
   const boxingObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("boxing")&&category.name === 'sports'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("boxing")&&category.name === 'sports'));
     }
   }
   

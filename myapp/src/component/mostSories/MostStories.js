@@ -17,14 +17,14 @@ const MostStories = () => {
         }
     },[status, dispatch])
 
-
+    console.log(data)
   return (
       <Box className='w-full'>
         <Swipe/>
         {/**Recent Post */}
         <Box className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2">
         {data.map((post) => {
-            let url = `/${post.category[0].name}/${post.title}`
+            let url = `/${post.category[0].name}/${post.category[0].mainstory}/${post.title}`
            return (
                 <Link key={post._id} to={url}>
                 <Card className='mt-5' sx={{background:'#f4f4f4', sm:{padding:'1.5rem', lg:{padding:'2.5rem'}}}}>

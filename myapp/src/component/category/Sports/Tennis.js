@@ -14,7 +14,7 @@ const Tennis = () => {
   //Function to get only tennis stories
   const tennisObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("tennis")&&category.name === 'sports'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("tennis")&&category.name === 'sports'));
     }
   }
   

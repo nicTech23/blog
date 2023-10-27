@@ -13,7 +13,7 @@ const NewsBox = () => {
   //Function to get only news stories
   const newsObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("news")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("news")&& category.name === 'news'));
     }
   }
   

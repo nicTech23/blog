@@ -14,7 +14,7 @@ const Mining = () => {
   //Function to get only mining stories
   const miningObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("mining")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("mining")&&category.name === 'business'));
     }
   }
   

@@ -13,7 +13,7 @@ const Music = () => {
   //Function to get only music stories
   const musicObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("music")&&category.name === 'entertainment'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("music")&&category.name === 'entertainment'));
     }
   }
   

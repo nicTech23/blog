@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const categorySchema = mongoose.Schema({
     name: String,
-    specific:[String]
+    storytypes:[String],
+    mainstory:String
 })
 
 const postSchema = mongoose.Schema({

@@ -13,7 +13,7 @@ const National = () => {
   //Function to get only nationa stories
   const nationalObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("national")&& category.name === 'national'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("national")&& category.name === 'national'));
     }
   }
   

@@ -48,11 +48,11 @@ const router = createBrowserRouter([
     element: <Register/>
   },
   {
-    path: '/:category/:title/',
+    path: '/:category/:specific/:title/',
     element: <SinglePage/>
   },
   {
-    path: '/:ca/:name/',
+    path: '/:category/:stories/',
     element: <SpecificStories/>
   },
 ])

@@ -14,7 +14,7 @@ const Crime = () => {
   //Function to get only crime stories
   const crimeObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("crime")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("crime")&& category.name === 'news'));
     }
   }
   

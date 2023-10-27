@@ -13,7 +13,7 @@ const Energy = () => {
   //Function to get only energy stories
   const energyObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("energy")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("energy")&&category.name === 'business'));
     }
   }
   

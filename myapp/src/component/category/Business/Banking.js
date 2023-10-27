@@ -13,7 +13,7 @@ const Banking = () => {
   //Function to get only banking stories
   const bankingObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("banking")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("banking")&&category.name === 'business'));
     }
   }
   

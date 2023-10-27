@@ -7,6 +7,7 @@ const secret = require('../config')
 
 // Post Routes 
 // ___/createblog/___
+
 const createPost = async (req, res)=>{
     const {title, content, image, category, author, topstory} = await req.body
     const newTitle = title.split(' ').join('-')
@@ -111,11 +112,11 @@ const news = async (req, res) => {
 }
 
 // Get Routes 
-// ___/news/:specific/___
+// ___/news/:storytypes/___
 
 const newsSpecific = async (req, res) => {
-    const {specific} = req.params
-    const news = await PostModel.find({"category.specific":specific})
+    const {storytypes} = req.params
+    const news = await PostModel.find({"category.storytypes":storytypes})
     res.json(news)
 }
 
@@ -128,11 +129,11 @@ const sports = async (req, res) => {
 }
 
 // Get Routes 
-// ___/sports/:specific/___
+// ___/sports/:storytypes/___
 
 const sportsSpecific = async (req, res) => {
-    const {specific} = req.params
-    const sport = await PostModel.find({"category.specific":specific})
+    const {storytypes} = req.params
+    const sport = await PostModel.find({"category.storytypes":storytypes})
     res.json(sport)
 }
 
@@ -144,11 +145,11 @@ const entertainment =  async (req, res) => {
 }
 
 // Get Routes 
-// ___/entertainment/:specific/___
+// ___/entertainment/:storytypes/___
 
 const entertainmentSpecific = async (req, res) => {
-    const {specific} = req.params
-    const entertainment = await PostModel.find({"category.specific":specific})
+    const {storytypes} = req.params
+    const entertainment = await PostModel.find({"category.storytypes":storytypes})
     res.json(entertainment)
 }
 
@@ -161,10 +162,10 @@ const business = async (req, res) => {
 
 
 // Get Routes 
-// ___/business:specific/___
+// ___/business:storytypes/___
 const businessSpecific = async (req, res) => {
-    const {specific} = req.params
-    const business = await PostModel.find({"category.specific":specific})
+    const {storytypes} = req.params
+    const business = await PostModel.find({"category.storytypes":storytypes})
     res.json(business)
 }
 

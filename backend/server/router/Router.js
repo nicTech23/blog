@@ -49,22 +49,22 @@ route.post('/createcategory/:postId', (req, res)=>{
 // get
 route.get('/news/', news )
 
-route.get('/news/:specific', newsSpecific)
+route.get('/news/:storytypes', newsSpecific)
 
 
 route.get('/postdata/', )
 
 route.get('/sports/', sports)
 
-route.get('/sports/:specific', sportsSpecific)
+route.get('/sports/:storytypes', sportsSpecific)
 
 route.get('/entertainment/', entertainment)
 
-route.get('/entertainment/:specific',  entertainmentSpecific)
+route.get('/entertainment/:storytypes',  entertainmentSpecific)
 
 route.get('/business/', business)
 
-route.get('/business/:specific', businessSpecific)
+route.get('/business/:storytypes', businessSpecific)
 
 
 route.get('/recentpost/', recentPost )

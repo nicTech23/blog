@@ -13,7 +13,7 @@ const Technology = () => {
   //Function to get only technology stories
   const technologyObjects = ()=>{
     if(data){
-      return data.filter(item => item.category.some(category => category.specific.includes("technology")&& category.name === 'news'));
+      return data.filter(item => item.category.some(category => category.storytypes.includes("technology")&& category.name === 'news'));
     }
   }
   

@@ -13,7 +13,7 @@ const RadioTV = () => {
   //Function to get only radio stories
   const radioObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("radio")&&category.name === 'entertainment'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("radio")&&category.name === 'entertainment'));
     }
   }
   

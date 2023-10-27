@@ -14,7 +14,7 @@ const Economic = () => {
   //Function to get only economic stories
   const economicObjects = ()=>{
     if(data){
-        return data.filter(item => item.category.some(category => category.specific.includes("economic")&&category.name === 'business'));
+        return data.filter(item => item.category.some(category => category.storytypes.includes("economic")&&category.name === 'business'));
     }
   }
   
