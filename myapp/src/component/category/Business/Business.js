@@ -1,16 +1,9 @@
 import React from 'react'
 import Header2 from '../../header/Header2'
 import { Box } from '@mui/material'
-import SidebarRight2 from '../../sidebarRight/SidebarRight2'
-import Economic from './Economic'
-import Energy from './Energy'
-import Finance from './Finance'
-import Mining from './Mining'
-import Investment from './Investment'
-import RealEstate from './RealEstate'
-import Agric from './Agric'
-import Banking from './Banking';
 import SidebarRight from '../../sidebarRight/SidebarRight'
+import StoryBoxs from '../../storyBox/StoryBoxs'
+import { fetchBusiness } from '../../redux/createSlice/allStoriesSlice'
 
 const Business = () => {
   return (
@@ -21,7 +14,7 @@ const Business = () => {
         <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Economic</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Economic/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='economic' storyCategory='business'/>
           </Box>
 
          
@@ -29,43 +22,43 @@ const Business = () => {
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Energy</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Energy/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='energy' storyCategory='business'/>
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Finance</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Finance/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='finance' storyCategory='business'/>
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Mining</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Mining/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='mining' storyCategory='business'/>
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Investment</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Investment/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='intertainment' storyCategory='business'/>
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>RealEstate</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <RealEstate/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='realestate' storyCategory='business'/>
           </Box>
 
           <Box className='mb-10 cursor-pointer'>
             <div className='bg-red-600 p-2 font-sans text-base text-white w-32 text-center'>Agricbusiness</div>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Agric/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='agricultural' storyCategory='business'/>
           </Box>
 
           <Box className='mb-10 cursor-pointer' sx={{width:{xs:'100%'}}}>
             <Box className='bg-red-600 p-2 font-sans text-base text-white w-fit text-center' sx={{padding:{xs:'5px'}}}>Banking</Box>
             <hr className='border-b-1 border-red-600 mb-3'/>
-            <Banking/>
+            <StoryBoxs fetch = {fetchBusiness} storyType='banking' storyCategory='business'/>
           </Box>
         </Box>
         <SidebarRight/>
