@@ -16,6 +16,7 @@ import Login from './component/author/Login';
 import Register from './component/author/Register';
 import Header2 from './component/header/Header2';
 import SinglePage from './component/singlePage/SinglePage';
+import SpecificStories from './component/specificStories/SpecificStories';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: '/:category/:title/',
     element: <SinglePage/>
+  },
+  {
+    path: '/:ca/:name/',
+    element: <SpecificStories/>
   },
 ])
 

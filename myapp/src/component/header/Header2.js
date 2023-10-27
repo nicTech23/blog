@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header2 = () => {
   return (
@@ -8,14 +9,16 @@ const Header2 = () => {
             logoo
         </Box>
         <Box className='w-6/12 flex' sx={{display:{xs:'none', lg:"block"}}} >
+            <nav>
             <ul className='flex justify-between'>
-                <li className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'>Home</li>
-                <li className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'>News</li>
-                <li className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'>Entertainment</li>
-                <li className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'>Sport</li>
-                <li className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'>Business</li>
-                <li className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'>Research</li>
+                <a href='/' className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'><li > Home </li></a>  
+                <a href='/news' className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'><li > News </li></a>
+                <a href='/entertainment' className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'><li > Entertainment </li></a>
+                <a href='/sports' className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'><li > Sports </li></a>
+                <a href='/business' className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'><li > Business </li></a>
+                <a href='/research' className='p-4 text-white text-base font-sans hover:bg-black cursor-pointer transition ease-in'><li > Research </li></a>
             </ul>
+            </nav>
         </Box>
         <Box className="w-1/12">
             <div>sserach</div>
