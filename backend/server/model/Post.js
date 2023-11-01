@@ -25,7 +25,7 @@ const postSchema = mongoose.Schema({
     category:{
         type: [categorySchema]
     },
-    topstory:{
+    popular:{
         type: Boolean,
         default: false
     },

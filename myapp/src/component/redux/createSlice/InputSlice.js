@@ -27,7 +27,7 @@ const registerSlice = createSlice({
         },
         Login:(state, action)=>{
             const fillName = action.payload.name
-            state[fillName] = action.payload.value
+            state.login[fillName] = action.payload.value
         },
     }
 })

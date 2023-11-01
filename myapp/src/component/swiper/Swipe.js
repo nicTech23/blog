@@ -50,18 +50,23 @@ const Swipe = () => {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}
         autoplay={true}
-        >
+      >
+
          {data.map((data, index)=>{
             return(
               <SwiperSlide key={index}>
+
                 <Box className='relative w-60 h-64 overflow-hidden rounded-xl'>
-                <CardMedia className='absolute w-60 h-64' sx={{ objectFit:"cover"}}
-                        component="img"
-                        image="https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg"
-                        alt="image"
+                    <CardMedia className='absolute w-60 h-64' sx={{ objectFit:"cover"}}
+                            component="img"
+                            image="https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg"
+                            alt="image"
                       />
-                <div className='absolute w-60 h-64 top-0 bg-gradient-to-t from-black via-10% to-transparent to-90%'></div>
-                <span className='absolute bottom-1 text-white font-sans font-bold m-3'>{data.title}</span>
+
+                    <div className='absolute w-60 h-64 top-0 bg-gradient-to-t from-black via-10% to-transparent to-90%'></div>
+                    
+                    <span className='absolute bottom-1 text-white font-sans font-bold m-3'>{data.title}</span>
+                    
                 </Box>
               </SwiperSlide>
             )

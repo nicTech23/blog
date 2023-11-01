@@ -1,8 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
+const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
 export const fetctRecentPost = createAsyncThunk('recentPost/fetch', async()=>{
-    const response = await axios.get('http://localhost:8080/api/v1/recentpost/')
+    const response = await axios.get('http://localhost:8080/api/v1/recentpost/', config)
     return response
 })
 

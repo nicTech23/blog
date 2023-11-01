@@ -24,22 +24,29 @@ const initialState = {
     },
 }
 
+
+const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
 export const fetchSport = createAsyncThunk('sport/fetch', ()=>{
-    const response = axios.get(`http://localhost:8080/api/v1/sports/`)
+    const response = axios.get(`http://localhost:8080/api/v1/sports/`, config)
     return response
 })
 
 export const fetchEntertainment = createAsyncThunk('entertainment/fetch', ()=>{
-    const response = axios.get(`http://localhost:8080/api/v1/entertainment/`)
+    const response = axios.get(`http://localhost:8080/api/v1/entertainment/`, config)
     return response
 })
 
 export const fetchBusiness = createAsyncThunk('business/fetch', ()=>{
-    const response = axios.get(`http://localhost:8080/api/v1/business/`)
+    const response = axios.get(`http://localhost:8080/api/v1/business/`, config)
     return response
 })
 export const fetchNews = createAsyncThunk('news/fetch', async ()=>{
-    const response = await axios.get(`http://localhost:8080/api/v1/news/`)
+    const response = await axios.get(`http://localhost:8080/api/v1/news/`, config)
     return response
 })
 

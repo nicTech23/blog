@@ -18,7 +18,9 @@ const {
     business,
     recentPost,
     authorLogin,
-    singledata
+    singledata,
+    storyType,
+    popular
 } = require('../controller/appContoller')
 
 //post 
@@ -47,9 +49,12 @@ route.post('/createcategory/:postId', (req, res)=>{
 ************************************************/
 
 // get
-route.get('/news/', news )
+route.get('/news/', news)
+
+route.get('/category/:storytype/:stories/', storyType )
 
 route.get('/news/:storytypes', newsSpecific)
+route.get('/popular/', popular)
 
 
 route.get('/postdata/', )

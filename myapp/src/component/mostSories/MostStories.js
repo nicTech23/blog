@@ -16,8 +16,7 @@ const MostStories = () => {
             dispatch(fetctRecentPost())
         }
     },[status, dispatch])
-
-    console.log(data)
+    
   return (
       <Box className='w-full'>
         <Swipe/>
@@ -52,7 +51,7 @@ const MostStories = () => {
                         <CardContent sx={{height:'150px'}}>
                         <Box className='flex flex-col'>
                             <span className='text-xs text-gray-500 capitalize'>
-                            Source: Oppong nicholas
+                            Source: Oppong samo
                             </span>
                             <span className='font-sans text-sm mt-5'>
                             Lizards are a widespread group of squamate reptiles, with over 6,000

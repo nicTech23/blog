@@ -3,13 +3,17 @@ import {registerReducer} from '../createSlice/InputSlice'
 import recentPostReducer from '../createSlice/RecentPostSlice'
 import allDataReducer from '../createSlice/allStoriesSlice'
 import { singleDataReducer } from "../createSlice/singleData"
+import { specificStoriesReducer } from "../createSlice/SpecificStories"
+import  popularSlice from '../createSlice/populaSlice'
 
 const store = configureStore({
     reducer: {
         registerAuthor:registerReducer,
         recentPost: recentPostReducer,
         allPostData: allDataReducer,
-        singleData: singleDataReducer
+        singleData: singleDataReducer,
+        specificStories:specificStoriesReducer,
+        popular: popularSlice
     }
 })
 

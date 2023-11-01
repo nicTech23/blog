@@ -9,14 +9,14 @@ const secret = require('../config')
 // ___/createblog/___
 
 const createPost = async (req, res)=>{
-    const {title, content, image, category, author, topstory} = await req.body
+    const {title, content, image, category, author, popular} = await req.body
     const newTitle = title.split(' ').join('-')
     await PostModel.create({
        title: newTitle,
        content,
        image,
        category,
-       topstory
+       popular
     }).then((post) =>{
        AutherModel.findOne({username:author}).then((data) =>{
            post.author = data._id
@@ -193,6 +193,33 @@ const recentPost = async (req, res)=>{
     }
 }
 
+const popular = async(req, res)=>{
+    try {
+        const popularData = await PostModel.find({popular: true}).sort().limit(20)
+        res.json(popularData)
+    } catch (error) {
+        res.status(403).send("request not found")
+    }
+}
+
+// Get Routes 
+// ___/category/:storytype/:stories/___
+const storyType = async (req, res)=>{
+    try {
+        const{storytype, stories} = req.params
+
+        await PostModel.find({"category.name":storytype}).then((data)=>{
+            const storiesData = data.filter(story=>{
+                return story.category[0].mainstory === stories
+            })
+            console.log(storyType)
+            return res.json(storiesData)
+        })
+    } catch (error) {
+        res.status(403).send("request not found")
+    }
+}
+
 module.exports = {
     createPost, 
     createcomment,
@@ -207,5 +234,7 @@ module.exports = {
     businessSpecific, 
     recentPost,
     authorLogin,
-    singledata
+    singledata,
+    storyType,
+    popular
 }

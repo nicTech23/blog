@@ -52,17 +52,20 @@ const router = createBrowserRouter([
     element: <SinglePage/>
   },
   {
-    path: '/:category/:stories/',
+    path: '/:storytype/:stories/',
     element: <SpecificStories/>
+  },
+  {
+    path: '*',
+    element: <div>Page Not Found</div>
   },
 ])
 
 function App() {
   return (
-    <div>
-      <Header2/>
+    <Box className='relative' >
       <RouterProvider router={router}/>
-    </div>
+    </Box>
   );
 }
 

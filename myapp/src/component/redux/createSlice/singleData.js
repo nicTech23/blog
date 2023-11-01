@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    status: 'idle',
+    loading: true,
     data:[],
-    error:''
 }
 
 const singleDataSlice = createSlice({
@@ -12,7 +11,7 @@ const singleDataSlice = createSlice({
     reducers:{
         singleData:(state, action)=>{
             state.data = action.payload
-            state.status  = 'success'
+            state.loading  = true
         }
     }
 })
