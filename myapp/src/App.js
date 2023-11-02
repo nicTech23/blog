@@ -17,6 +17,7 @@ import Register from './component/author/Register';
 import Header2 from './component/header/Header2';
 import SinglePage from './component/singlePage/SinglePage';
 import SpecificStories from './component/specificStories/SpecificStories';
+import Post from './component/post/Post';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: '*',
     element: <div>Page Not Found</div>
+  },
+  {
+    path: '/post',
+    element: <Post/>
   },
 ])
 

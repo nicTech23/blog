@@ -17,9 +17,7 @@ const Business = () => {
           <StoryTypes fetch={fetchBusiness} linkNav= '/business/energy' storyType='energy' storyCategory='business'/>
           <StoryTypes fetch={fetchBusiness} linkNav= '/business/finace' storyType='finance' storyCategory='business'/>
           <StoryTypes fetch={fetchBusiness} linkNav= '/business/mining' storyType='mining' storyCategory='business'/>
-          <StoryTypes fetch={fetchBusiness} linkNav= '/business/intertainment' storyType='intertainment' storyCategory='business'/>
-          <StoryTypes fetch={fetchBusiness} linkNav= '/business/realestate' storyType='realestate' storyCategory='business'/>
-          <StoryTypes fetch={fetchBusiness} linkNav= '/business/agricultural' storyType='agricultural' storyCategory='business'/>
+          <StoryTypes fetch={fetchBusiness} linkNav= '/business/realestate' storyType='real estate' storyCategory='business'/>
           <StoryTypes fetch={fetchBusiness} linkNav= '/business/agricultural' storyType='agricultural' storyCategory='business'/>
           <StoryTypes fetch={fetchBusiness} linkNav= '/business/banking' storyType='banking' storyCategory='business'/>
         </Box>
