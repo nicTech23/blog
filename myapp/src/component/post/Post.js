@@ -2,102 +2,90 @@ import { Box, Button, Checkbox, FormControlLabel, FormGroup,  TextareaAutosize, 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { postAction } from '../redux/createSlice/PostSlice';
+
 
 const Post = () => {
     const postData = useSelector((state)=> state.post)
 
+
     const dispatch = useDispatch()
 
-    const[title, setTitle] = useState('')
-    const[content, setContent] = useState('')
-    const[category, setCategory] = useState([])
-    const[popular, setPopular] = useState('')
-    const[image, setImage] = useState('')
-    const[author, setAuthor] = useState('Yaw')
-
+    // geting  target value in category to display list of storyTypes in that category in Post Pasge
     const [categoryCheck, setCategoryCheck] = useState('')
-    
-    console.log(image)
 
-    // getting story type to category
+    // getting story type to category 
     const categoryGetHandle = (e)=>{
-        if(e.target.checked){
-            setCategory([...category, e.target.value])
-        } else {
-            setCategory(category.filter(data => data !== e.target.value))
-        }
+        dispatch(postAction.getCategory(e.target.value))
     }
 
     // Selecting story Type an clearing category
     const CategoryHandleChange = (e) =>{
         setCategoryCheck(e.target.value)
-        setCategory([])
+
+        //clearing the category data when different category is selected
+        dispatch(postAction.getChecKCategory(e.target.value))
     }
 
+    // getting Title of the post
     const titleHandle = (e)=>{
-        setTitle(e.target.value)
+        dispatch(postAction.getTitle(e.target.value))
     }
 
+    // getting Content of the post
     const contentHandle = (e)=>{
-        setContent(e.target.value)
+        dispatch(postAction.getContent(e.target.value))
     }
 
+    // getting Image of the post
     const imageHandle = (e)=>{
-        setImage(e.target.file)
+        dispatch(postAction.getImage(e.target.files[0]))
     }
 
+    // showing is the story will be popular or not
     const popularHandle = (e)=>{
         if(e.target.checked){
-            setPopular(true)
+            dispatch(postAction.getPopural(true))
             } else{
-                setPopular(false)
+                dispatch(postAction.getPopural(false))
             }
         }
-    const HandlePost = async()=>{
-       const data ={}
-       if(title)  data.title = title
-       if(content) data.content = content
-       if(category) data.category = category
-       if(author) data.author = author
-       
-       const obKey = Object.keys(data).length
-       if((obKey>3 ) && (category.length > 0)){
-        dispatch({
-            title,
-            content,
-            category,
-            image,
-            author,
-            popular
-        })
-       }
-       let format = new FormData()
-       
-       for(let key in postData){
-        format.append(key, postData[key])
-       }
-       console.log(format)
-       const response = await axios.post(`http://localhost:8080/api/v1/createpost/`, format)
-       console.log(response)
-    }  
 
+         
+        const form = new FormData()
+        form.append('name', 'yaw')
+        console.log(form)
+    const HandlePost = async()=>{
+        console.log(postData)
+
+        const formData = new FormData()
+       
+        for(let key in postData){
+            console.log(postData[key])
+           await formData.append(key, postData.key)
+        }
+        console.log(formData)
+    }  
 
   return (
     <Box className=' m-auto p-10 items-stretch justify-center ' sx={{width:"60%"}}>
         <Box className='mb-6 self-center w-full flex items-center justify-center'>
             <span className='font-semibold text-5xl font-sans'>Post Story</span>
         </Box>
+
         <FormGroup>
             <Box>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Title</Typography>
                 <input onChange={titleHandle} type='text' className='w-full border-2 border-sky-700 p-5 mb-5 outline-0'/>
             </Box> 
+
             <Box>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Content</Typography>
                 <Box  className=' border-2 border-sky-700 mb-5' sx={{width: "100%"}}>
                 <TextareaAutosize onChange={contentHandle} className='w-full flex self-center border-0 outline-0 px-4' aria-label="minimum height" minRows={3} placeholder="Minimum 3 rows" />
                 </Box>
             </Box>
+
             <Box>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Category</Typography>
                 <select value={categoryCheck} onChange={CategoryHandleChange} className='w-full border-2 border-sky-700 p-3 mb-5 outline-0' name="selectedOption">
@@ -108,9 +96,12 @@ const Post = () => {
                     <option value="entertainment">Entertainment</option>
                 </select>
             </Box>
+
             <Box className="mb-5">
+                {/* This condition check the category of story and display it story type */}
                 {categoryCheck === 'sports'? <>
                     <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
+
                     <FormGroup>
                         <FormControlLabel onChange={categoryGetHandle} value='football' control={<Checkbox />} label="Football" />
                         <FormControlLabel onChange={categoryGetHandle} value='boxing'required control={<Checkbox />} label="Boxing" />
@@ -119,6 +110,7 @@ const Post = () => {
                         <FormControlLabel onChange={categoryGetHandle} value='athletics' control={<Checkbox />} label="Athletics" />
                     </FormGroup>
                 </>: null}
+
                 {categoryCheck === 'news'? <>
                     <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
                     <FormGroup>
@@ -132,6 +124,7 @@ const Post = () => {
                         <FormControlLabel onChange={categoryGetHandle} value='crime'required control={<Checkbox />} label="Crime" />
                     </FormGroup>
                 </>: null}
+
                 {categoryCheck === 'business'? <>
                     <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
                     <FormGroup>
@@ -144,6 +137,7 @@ const Post = () => {
                         <FormControlLabel onChange={categoryGetHandle} value='Banking' control={<Checkbox />} label="Banking" />
                     </FormGroup>
                 </>: null}
+
                 {categoryCheck === 'entertainment'? <>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
                 <FormGroup>
@@ -154,16 +148,20 @@ const Post = () => {
                 </FormGroup>
                 </>: null}
             </Box>
+
             <Box className='mb-5'>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Popular</Typography>
                 <FormControlLabel onChange={popularHandle} control={<Checkbox />} label="Is popular" />
             </Box>
+
             <Box>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Story Picture</Typography>
-                <input onChange={imageHandle} type='file' className='w-full mb-5' />
+                <input onChange={imageHandle} type='file' accept='image/*' className='w-full mb-5' />
             </Box>
+
             <Button onClick={HandlePost} variant='contained' >Post</Button>
         </FormGroup>
+
     </Box>
   )
 }
