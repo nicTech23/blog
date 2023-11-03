@@ -20,11 +20,12 @@ const {
     authorLogin,
     singledata,
     storyType,
-    popular
+    popular,
+    upload
 } = require('../controller/appContoller')
 
 //post 
-route.post('/createblog/', createPost)
+route.post('/createblog/', upload.single("image"), createPost)
 
 route.post('/createcomment/', createcomment)
 

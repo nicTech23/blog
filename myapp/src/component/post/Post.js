@@ -13,6 +13,7 @@ const Post = () => {
 
     // geting  target value in category to display list of storyTypes in that category in Post Pasge
     const [categoryCheck, setCategoryCheck] = useState('')
+    const [categoryName, setCategoryName] = useState('')
 
     // getting story type to category 
     const categoryGetHandle = (e)=>{
@@ -20,7 +21,12 @@ const Post = () => {
     }
 
     // Selecting story Type an clearing category
-    const CategoryHandleChange = (e) =>{
+    const CategoryNameHandleChange = (e) =>{
+        setCategoryName(e.target.value)
+    }
+
+    // Selecting story Type an clearing category
+    const CategoryCheckHandleChange = (e) =>{
         setCategoryCheck(e.target.value)
 
         //clearing the category data when different category is selected
@@ -52,19 +58,22 @@ const Post = () => {
         }
 
          
-        const form = new FormData()
-        form.append('name', 'yaw')
-        console.log(form)
     const HandlePost = async()=>{
-        console.log(postData)
-
-        const formData = new FormData()
+        
        
-        for(let key in postData){
-            console.log(postData[key])
-           await formData.append(key, postData.key)
-        }
-        console.log(formData)
+        const formData = new FormData()
+        formData.append('image', postData.image)
+        formData.append('title', postData.title)
+        formData.append('content', postData.content)
+        formData.append('mainstory', postData.category[0])
+        formData.append('storytypes', postData.category)
+        formData.append('popular', postData.popular)
+        formData.append('author', postData.author)
+        formData.append('categoryname', categoryName)
+
+        const response = await axios.post('http://localhost:8080/api/v1/createblog', formData)
+    
+        console.log(response)
     }  
 
   return (
@@ -87,8 +96,8 @@ const Post = () => {
             </Box>
 
             <Box>
-                <Typography sx={{fontWeight:'bold', fontSize:20}}>Category</Typography>
-                <select value={categoryCheck} onChange={CategoryHandleChange} className='w-full border-2 border-sky-700 p-3 mb-5 outline-0' name="selectedOption">
+                <Typography sx={{fontWeight:'bold', fontSize:20}}>Category name</Typography>
+                <select value={categoryName} onChange={CategoryNameHandleChange} className='w-full border-2 border-sky-700 p-3 mb-5 outline-0' name="selectedOption">
                     <option value="">Select category of post</option>
                     <option value="sports">Sports</option>
                     <option value="business">Business</option>
@@ -97,11 +106,19 @@ const Post = () => {
                 </select>
             </Box>
 
+            <Box>
+                <Typography sx={{fontWeight:'bold', fontSize:20}}>Story Types</Typography>
+                <select value={categoryCheck} onChange={CategoryCheckHandleChange} className='w-full border-2 border-sky-700 p-3 mb-5 outline-0' name="selectedOption">
+                    <option value="">Select category of post</option>
+                    <option value="sports">Sports</option>
+                    <option value="business">Business</option>
+                    <option value="news">News</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
+            </Box>
             <Box className="mb-5">
                 {/* This condition check the category of story and display it story type */}
                 {categoryCheck === 'sports'? <>
-                    <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
-
                     <FormGroup>
                         <FormControlLabel onChange={categoryGetHandle} value='football' control={<Checkbox />} label="Football" />
                         <FormControlLabel onChange={categoryGetHandle} value='boxing'required control={<Checkbox />} label="Boxing" />
@@ -112,7 +129,7 @@ const Post = () => {
                 </>: null}
 
                 {categoryCheck === 'news'? <>
-                    <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
+
                     <FormGroup>
                         <FormControlLabel onChange={categoryGetHandle} value='news' control={<Checkbox />} label="News" />
                         <FormControlLabel onChange={categoryGetHandle} value='education' control={<Checkbox />} label="Education" />
@@ -126,7 +143,7 @@ const Post = () => {
                 </>: null}
 
                 {categoryCheck === 'business'? <>
-                    <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
+
                     <FormGroup>
                         <FormControlLabel onChange={categoryGetHandle} value='economic' control={<Checkbox />} label="Economic" />
                         <FormControlLabel onChange={categoryGetHandle} value='energy'required control={<Checkbox />} label="Energy" />
@@ -139,7 +156,6 @@ const Post = () => {
                 </>: null}
 
                 {categoryCheck === 'entertainment'? <>
-                <Typography sx={{fontWeight:'bold', fontSize:20}}>Story type</Typography>
                 <FormGroup>
                     <FormControlLabel onChange={categoryGetHandle} value='music' control={<Checkbox />} label="Music" />
                     <FormControlLabel onChange={categoryGetHandle} value='movie'required control={<Checkbox />} label="Movie" />
@@ -148,7 +164,7 @@ const Post = () => {
                 </FormGroup>
                 </>: null}
             </Box>
-
+            
             <Box className='mb-5'>
                 <Typography sx={{fontWeight:'bold', fontSize:20}}>Popular</Typography>
                 <FormControlLabel onChange={popularHandle} control={<Checkbox />} label="Is popular" />

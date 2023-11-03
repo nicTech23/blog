@@ -6,7 +6,7 @@ const initialState ={
     category:[],
     popular:false,
     image:'',
-    author:'', 
+    author:'yaw', 
     checkCategrory:''
 }
 

@@ -20,6 +20,7 @@ app.use(morgan('tiny'))
 app.use(cors({origin: 'http://localhost:3000',}));
 app.disable("x-powered-by")
 app.use('/api/v1', route)
+app.use(express.static('public'))
 
 const port = 8080
 

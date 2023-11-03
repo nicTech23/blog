@@ -4,29 +4,48 @@ const AutherModel = require('../model/Author')
 const {hashPassword, comparePassword} = require('./passwordHash')
 const jwt = require('jsonwebtoken')
 const secret = require('../config')
+const path = require('path')
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+    destination:(req, file, cb)=>{
+        cb(null, 'public/image')
+    },
+    filename:(req, file, cb)=>{
+        cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname))
+    }
+    
+})
+
+const upload = multer({storage:storage})
 
 // Post Routes 
 // ___/createblog/___
 
 const createPost = async (req, res)=>{
-    const {title, content, image, category, author, popular} = await req.body
-    const newTitle = title.split(' ').join('-')
-    await PostModel.create({
-       title: newTitle,
-       content,
-       image,
-       category,
-       popular
-    }).then((post) =>{
-       AutherModel.findOne({username:author}).then((data) =>{
-           post.author = data._id
-           return post.save()
-       }).then(()=>{
-           res.status(201).send({ms: "Post Created"})
-       })
-    }).catch(err =>{
-       res.status(501).send(err)
-    })
+     const {title, content, mainstory, storytypes, author, popular, categoryname} = await req.body
+     const category = [{name:categoryname, mainstory: mainstory, storytypes:[storytypes]}]
+    console.log(title)
+    console.log(req.file)
+     const newTitle = title.split(' ').join('-')
+     image = req.file.filename
+     //console.log(image)
+     await PostModel.create({
+        title: newTitle,
+        content,
+        image,
+        category,
+        popular,
+     }).then((post) =>{
+        AutherModel.findOne({username:author}).then((data) =>{
+            post.author = data._id
+            return post.save()
+        }).then(()=>{
+            res.status(201).send({ms: "Post Created"})
+        })
+     }).catch(err =>{
+        res.status(501).send(err)
+     })
    }
 
 // Post Routes 
@@ -236,5 +255,6 @@ module.exports = {
     authorLogin,
     singledata,
     storyType,
-    popular
+    popular,
+    upload
 }

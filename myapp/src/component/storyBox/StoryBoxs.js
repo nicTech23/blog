@@ -13,7 +13,7 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
     //Function to get only crime stories
     const returnFiltterData = ()=>{
       if(data){
-        return data.filter(item => item.category.some(category => category.storytypes.includes(storyType)&& category.name === storyCat));
+        return data.filter(item => item.category.some(category => category.storytypes.includes(storyType) && category.name === storyCat));
       }
     }
     
@@ -33,7 +33,7 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
     return (
       <Box className='w-full grid lg:grid-cols-4 gap-4 sm:grid-cols-2'>
             {
-              filterData?filterData.map(data =>{
+              filterData?.map(data =>{
                 let url = `/${data.category[0].name}/${data.category[0].mainstory}/${data.title}`
                 return(
                   <Link key={data._id} to={url}>
@@ -53,7 +53,7 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
                     
                   </Link>
                 )
-              }):null
+              })
             }
       </Box>
     )
