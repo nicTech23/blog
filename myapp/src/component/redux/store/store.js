@@ -5,6 +5,7 @@ import allDataReducer from '../createSlice/allStoriesSlice'
 import { singleDataReducer } from "../createSlice/singleData"
 import { specificStoriesReducer } from "../createSlice/SpecificStories"
 import  popularSlice from '../createSlice/populaSlice'
+import { postReducer } from "../createSlice/PostSlice"
 
 const store = configureStore({
     reducer: {
@@ -13,7 +14,8 @@ const store = configureStore({
         allPostData: allDataReducer,
         singleData: singleDataReducer,
         specificStories:specificStoriesReducer,
-        popular: popularSlice
+        popular: popularSlice,
+        post: postReducer
     }
 })
 

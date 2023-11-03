@@ -28,8 +28,7 @@ const Login = () => {
       }))
   }
 
-
-
+  
   return (
     <Box className = "flex w-screen h-screen items-center justify-center bg-gray-200">
 

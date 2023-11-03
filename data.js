@@ -1,4 +1,19 @@
-let m = {
-    name:5
+const data = {
+    title: 'jdjjd',
+    name:'hdhd',
+    popular:false
 }
-console.log(m['name'])
+
+if(!title && !content && !category && image){
+    const postData = {
+        title,
+        content,
+        category, 
+        popular,
+        author,
+        image   
+    }
+    console.log("data")
+   }else{
+    console.log("requiedjjjj")
+   }
