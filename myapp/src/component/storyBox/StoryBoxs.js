@@ -13,6 +13,7 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
     //Function to get only crime stories
     const returnFiltterData = ()=>{
       if(data){
+        console.log(data)
         return data.filter(item => item.category.some(category => category.storytypes.includes(storyType) && category.name === storyCat));
       }
     }
