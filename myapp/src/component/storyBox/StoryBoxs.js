@@ -14,7 +14,8 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
     const returnFiltterData = ()=>{
       if(data){
         console.log(data)
-        return data.filter(item => item.category.some(category => category.storytypes.includes(storyType) && category.name === storyCat));
+        const newdata = data.filter(item => item.category.some(category => category.storytypes.includes(storyType) && category.name === storyCat));
+        return newdata
       }
     }
     

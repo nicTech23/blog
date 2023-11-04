@@ -32,21 +32,21 @@ const config = {
   };
 
 export const fetchSport = createAsyncThunk('sport/fetch', ()=>{
-    const response = axios.get(`http://localhost:8080/api/v1/sports/`, config)
+    const response = axios.get(`http://localhost:8080/api/v1/sports/`)
     return response
 })
 
 export const fetchEntertainment = createAsyncThunk('entertainment/fetch', ()=>{
-    const response = axios.get(`http://localhost:8080/api/v1/entertainment/`, config)
+    const response = axios.get(`http://localhost:8080/api/v1/entertainment/`)
     return response
 })
 
 export const fetchBusiness = createAsyncThunk('business/fetch', ()=>{
-    const response = axios.get(`http://localhost:8080/api/v1/business/`, config)
+    const response = axios.get(`http://localhost:8080/api/v1/business/`)
     return response
 })
 export const fetchNews = createAsyncThunk('news/fetch', async ()=>{
-    const response = await axios.get(`http://localhost:8080/api/v1/news/`, config)
+    const response = await axios.get(`http://localhost:8080/api/v1/news/`)
     return response
 })
 

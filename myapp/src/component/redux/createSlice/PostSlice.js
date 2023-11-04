@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState ={
     title:'',
     content:'',
-    category:[],
     popular:false,
     image:'',
     author:'yaw', 
-    checkCategrory:''
+    type:'',
+    category:''
 }
 
 const postSlice = createSlice({
@@ -20,12 +20,8 @@ const postSlice = createSlice({
         getContent:(state, action)=>{
             state.content = action.payload
         },
-        getCategory:(state, action)=>{
-            if(!state.category.includes(action.payload)){
-                state.category =  [...state.category, action.payload]
-            } else{
-                state.category = state.category.filter(item => item != action.payload)
-            }
+        getType:(state, action)=>{
+            state.type = action.payload
         },
         getPopural:(state, action)=>{
             state.popular = action.payload
@@ -36,9 +32,8 @@ const postSlice = createSlice({
         getAuthor:(state, action)=>{
             state.author = action.payload
         },
-        getChecKCategory:(state, action)=>{
-            state.checkCategrory = action.payload
-            state.category = []
+        getCategory:(state, action)=>{
+            state.category = action.payload
         }
     }
 })

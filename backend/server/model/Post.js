@@ -1,10 +1,5 @@
 const mongoose = require('mongoose')
 
-const categorySchema = mongoose.Schema({
-    name: String,
-    storytypes:[String],
-    mainstory:String
-})
 
 const postSchema = mongoose.Schema({
     title:{
@@ -22,9 +17,8 @@ const postSchema = mongoose.Schema({
         ref: 'authors' 
     },
     comment:[{type:mongoose.Schema.Types.ObjectId, ref:'comments'}],
-    category:{
-        type: [categorySchema]
-    },
+    category:String,
+    type:String,
     popular:{
         type: Boolean,
         default: false

@@ -23,9 +23,7 @@ const upload = multer({storage:storage})
 // ___/createblog/___
 
 const createPost = async (req, res)=>{
-     const {title, content, mainstory, storytypes, author, popular, categoryname} = await req.body
-     const category = [{name:categoryname, mainstory: mainstory, storytypes:[storytypes]}]
-    console.log(title)
+     const {title,content, author, category, type, popular } = await req.body
     console.log(req.file)
      const newTitle = title.split(' ').join('-')
      image = req.file.filename
@@ -36,6 +34,7 @@ const createPost = async (req, res)=>{
         image,
         category,
         popular,
+        type
      }).then((post) =>{
         AutherModel.findOne({username:author}).then((data) =>{
             post.author = data._id
@@ -126,7 +125,7 @@ const authorLogin = async (req, res)=>{
 // ___/news/___
 
 const news = async (req, res) => {
-    const news = await PostModel.find({"category.name":"news"})
+    const news = await PostModel.find({category:"news"})
     res.json(news)
 }
 
@@ -143,7 +142,7 @@ const newsSpecific = async (req, res) => {
 // ___/sports/___
 
 const sports = async (req, res) => {
-    const sports = await PostModel.find({"category.name":"sports"})
+    const sports = await PostModel.find({category:"sports"})
     res.json(sports)
 }
 
@@ -159,7 +158,7 @@ const sportsSpecific = async (req, res) => {
 // Get Routes 
 // ___/entertainment/___
 const entertainment =  async (req, res) => {
-    const entertainment = await PostModel.find({"category.name":"entertainment"})
+    const entertainment = await PostModel.find({category:"entertainment"})
     res.json(entertainment)
 }
 
@@ -175,7 +174,7 @@ const entertainmentSpecific = async (req, res) => {
 // Get Routes 
 // ___/business/___
 const business = async (req, res) => {
-    const business = await PostModel.find({"category.name":"business"})
+    const business = await PostModel.find({category:"business"})
     res.json(business)
 }
 
@@ -192,10 +191,10 @@ const businessSpecific = async (req, res) => {
 // ___/singledata/:category/:title/___
 const singledata = async (req, res) => {
     const {category, title} = req.params
-    await PostModel.find({"category.name":category})
+    await PostModel.find({category:category})
         .then((response)=>{
            const data = response.filter(data => data.title === title)
-           return res.json({title: data[0].title, image:data[0].image,
+           return res.json({title: data.title, image:data[0].image,
              content:data[0].content, id: data[0]._id, comment:data[0].comment})
         })
         .catch(err => res.status(501).json(err.message))
@@ -227,7 +226,7 @@ const storyType = async (req, res)=>{
     try {
         const{storytype, stories} = req.params
 
-        await PostModel.find({"category.name":storytype}).then((data)=>{
+        await PostModel.find({category:storytype}).then((data)=>{
             const storiesData = data.filter(story=>{
                 return story.category[0].mainstory === stories
             })

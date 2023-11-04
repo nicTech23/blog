@@ -23,7 +23,7 @@ const SidebarRight = () => {
       
       <Box className='grid lg:grid-cols-1 justify-center w-full pr-3'>
         {data ? data.map((data) =>{
-          let url = `/${data.category[0].name}/${data.category[0].mainstory}/${data.title}`
+          let url = `/${data.category}/${data.type}/${data.title}`
           return (
             <Link key={data._id} to={url}>
               <Card className='p-4 flex flex-row sm:full cursor-pointer mt-3 w-full'>

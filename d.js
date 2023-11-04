@@ -1,4 +1,4 @@
-const data = [
+data = [
     {
         "_id": "65454f3947d45e6ecc3472de",
         "title": "my-title",
@@ -91,7 +91,7 @@ const data = [
         "comment": [],
         "category": [
             {
-                name: "sports",
+                "name": "sports",
                 "storytypes": [
                     "football,boxing"
                 ],
@@ -105,25 +105,3 @@ const data = [
         "author": "652471d77ab60151e3848ba0"
     }
 ]
-
-const m = data.filter(item => item.category[0].storytypes.includes('football'))
-
-let rn = data.map((item)=>{
-    if(item.category.some(category=> category.storytypes.includes('football'))){
-        const newarr = [...arr, item]
-        return newarr
-    }
-})
-const n = data.filter(item => item.category.some(category => category.storytypes.includes("football")));
-const boxingData = data.filter(item => item.category[0].storytypes.includes("boxing")&& item.category[0]==='sports');
-
-// const filteredData = data.reduce((result, item) => {
-//     if (item.category[0].storytypes.includes("football")) {
-//       result.push(item);
-//     }
-//     return result;
-//   }, []);
-const filteredData = data.filter(item => item.category[0].storytypes.includes("football"));
-
-
-  console.log(filteredData)

@@ -21,7 +21,6 @@ const HomePage = () => {
     <Box className='' sx={{width:"100%"}}>
       <Header2/>
       <Box className='flex flex-row relative' sx={{width:"100%", paddingLeft:{xs:"0px", lg:"5rem"}, paddingRight:{xs:"0px", lg:"5rem"} }}>
-        <SidebarLeft/>
         <Content/>
         <SidebarRight/>
       </Box>

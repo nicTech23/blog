@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import Swipe from '../swiper/Swipe'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetctRecentPost } from './../redux/createSlice/RecentPostSlice';
@@ -11,6 +11,7 @@ const MostStories = () => {
     const status = useSelector((state)=>state.recentPost.status)
     const dispatch = useDispatch()
     
+    console.log(data)
     useEffect(()=>{
         if(status === 'idle'){
             dispatch(fetctRecentPost())
@@ -21,9 +22,10 @@ const MostStories = () => {
       <Box className='w-full'>
         <Swipe/>
         {/**Recent Post */}
-        <Box className="grid sm:grid-cols-2 lg:grid-cols-1 gap-2">
-        {data.map((post) => {
-            let url = `/${post.category[0].name}/${post.category[0].mainstory}/${post.title}`
+        <Box className="grid sm:grid-cols-2 lg:grid-cols-2 gap-2">
+        {data?data.map((post) => {
+            let imageUrl = `http://localhost:8080/image/${post.image}`
+            let url = `/${post.category}/${post.type}/${post.title}`
            return (
                 <Link key={post._id} to={url}>
                 <Card className='mt-5' sx={{background:'#f4f4f4', sm:{padding:'1.5rem', lg:{padding:'2.5rem'}}}}>
@@ -36,28 +38,25 @@ const MostStories = () => {
                         <span className='mr-5'>News</span>
                         <span className='mr-7'>Politics</span>
                     </div>
-                </Box>
-
+                </Box> 
                 <Box className='mt-5'>
-                    <span className='text-xl font-sans font-bold'> IT system is solid: NPP Can't much us in 2024 - Oman Boamah</span>
+                    <span className='text-xl font-sans font-bold'>{post.title}</span>
+                    {data && data.title ? <span className='text-xl font-sans font-bold'  dangerouslySetInnerHTML={{__html: data.title.split('-').join(' ')}}/> : null}
                 </Box>
-                <Card className='w-full mt-5 rounded-xl' sx={{width:'100%'}}>
+                <Card className='w-full mt-5 rounded-xl ' sx={{width:'100%'}}>
                     <CardActionArea>
-                        <CardMedia sx={{height:{lg:'300px', xs:'150px', sm:"200px"}, objectFit:"fill"}}
+                        <CardMedia sx={{height:{lg:'300px', xs:'150px', sm:"200px"}, objectFit:"cover"}}
                         component="img"
-                        image="https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg"
+                        image={imageUrl}
                         alt="green iguana"
+                        
                         />
                         <CardContent sx={{height:'150px'}}>
                         <Box className='flex flex-col'>
                             <span className='text-xs text-gray-500 capitalize'>
-                            Source: Oppong samo
+                            Source: {post.author.firstname} {post.author.lastname}
                             </span>
-                            <span className='font-sans text-sm mt-5'>
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica Lizards are 
-                            a widespread group of squamate reptiles, with over 6,000
-                            </span>
+                            <span className='font-sans text-sm mt-1'>{post.content.substring(0,300)} </span>
                         </Box>
                         </CardContent>
                     </CardActionArea>
@@ -65,7 +64,7 @@ const MostStories = () => {
             </Card>
             </Link>
            ) 
-        })}
+        }):null}
 
         </Box>  
     </Box>
