@@ -21,7 +21,7 @@ const Content = () => {
  
   // `http://localhost:8080/image/${recentData[0].image}`: null
   return (
-      <Box className='w-7/12 bg-white  p-5'sx={{width:{xs:'100%', lg:'75%'}}}>
+      <Box className='w-7/12 bg-gray-100  p-5'sx={{width:{xs:'100%', lg:'75%'}}}>
        
         {/*Top Image */}
           {
@@ -29,7 +29,7 @@ const Content = () => {
               const imageUrl = `http://localhost:8080/image/${data.image}`
               if (index === 0 )
                 return (
-                  <Box id='top-image' className="w-full h-[28rem] bg-black relative mb-12" >
+                  <Box id='top-image' className="w-full bg-white h-[28rem] relative mb-12" >
 
                       <img 
                       className='object-fill absolute top-0 w-full h-full'
@@ -57,13 +57,13 @@ const Content = () => {
               }
                   
         {/* Two boxs */}
-        <Box  className='flex space-x-3 mb-5'>
+        <Box  className='flex space-x-3 mb-5 '>
           {
             recentData?recentData.map((data, index)=>{
               const imageUrl = `http://localhost:8080/image/${data.image}`
               if(index >=1 && index <=2) return (
 
-                <Box className='w-1/2 h-80  border-2 shadow-md border-slate-200 flex flex-col justify-evenly'>
+                <Box className='w-1/2 h-80  border-2 shadow-md  flex flex-col justify-evenly'>
                     <Box className='w-full h-[13rem] border-b-2 border-slate-100'>
                       <img className='object-fill h-full w-full' src={imageUrl}/>
                     </Box>
@@ -72,7 +72,7 @@ const Content = () => {
                       <Box>
                       
                       <Link to={`/${data.category}/${data.type}/${data.title}`}>
-                        <span className='text-lg font-semibold hover:text-red-600 '>{data.title}</span>
+                        <span className='text-xl font-semibold font-sans hover:text-red-600 '>{data.title}</span>
                       </Link>
                         
                       </Box>
@@ -107,7 +107,7 @@ const Content = () => {
                   </Box>
     
                   {/* content */}
-                  <Box className="w-[62%] boreder-2 h-full p-3 flex flex-col justify-evenly border-2">
+                  <Box className="w-[62%]  h-full p-3 flex flex-col justify-evenly border-t-2 border-b-2">
                       <Box className='mb-2'>
                         <Link to={`/${data.category}/${data.type}/${data.title}`}>
                           <span className='text-lg font-semibold hover:text-red-600 '>{data.title}</span>

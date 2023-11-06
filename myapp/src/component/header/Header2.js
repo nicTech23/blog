@@ -1,93 +1,44 @@
-import { AppBar, Box, Button, Menu, MenuItem, Toolbar } from '@mui/material'
-import React from 'react'
+import { AppBar, Box, Button, Menu, MenuItem, Toolbar} from '@mui/material'
+import React, { useState } from 'react'
 import { Nav, NavLink, NavLinkLink } from 'react-router-dom'
-import MenuIcon from '@mui/icons-material/Menu';
-import Fade from '@mui/material/Fade';
-import Ico from '@mui/icons-material/Search';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 
 const Header2 = () => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+const navLinkActive = ({isActive})=>{
 
-    const navbarStyle = ({isActive}) =>{
-      return {
-        color: isActive ? 'black': 'white'
-      }
-    }
+}
+const [search, setSearch] = useState(true)
+const handleClick =()=>{
+  setSearch(!search)
+}
     
   return (
-    <div className='sticky top-0 z-10'>
-    <Box className='flex h-14 justify-between w-screen items-center lg:pl-10 lg:pr-10 sm:pl-2 sm:pr-2 mb-5' sx={{background:"red", width:"100%", overflow:'hidden'}}>
-    
-        <Box className=' w-1/6' sx={{display:{sm:'block', lg:"none"}, width:"10%"}} >
-                <Button
-                  id="fade-button"
-                  aria-controls={open ? 'fade-menu' : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
-                  onClick={handleClick}
-                >
-                <MenuIcon sx={{color:'white'}}/>
-                </Button>
-                <Menu 
-                  id="fade-menu"
-                  MenuListProps={{
-                    'aria-labelledby': 'fade-button',
-                  }}
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  TransitionComponent={Fade}
-                >
-                  <NavLink to='/'><MenuItem onClick={handleClose}>Home</MenuItem></NavLink>
-                  <NavLink to='/news'><MenuItem onClick={handleClose}>News</MenuItem></NavLink>
-                  <MenuItem onClick={handleClose}>Sports</MenuItem>
-                  <MenuItem onClick={handleClose}>Entertainment</MenuItem>
-                  <MenuItem onClick={handleClose}>Business</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                </Menu>
-        </Box>
-
-        <div className='1/6'>Logo</div>
-        
-        <Box className='bg-white rounded-md flex h-8 justify-start items-center text-black w-2/6' 
-            sx={{width:{xs:"50%", lg:"384px"}}}>
-            <input type='text'  className='text-black w-24 h-6 ml-2 outline-0'/>
-            <span  className='cursor-pointer font-bol'>Search</span>
-        </Box>
-
-        <Box className='justify-between items-end w-2/6 sm:hidden lg:flex' sx={{display:{xs:'none', lg:'flex'}}}>
-            <div className='hover:text-black text-gray-200  flex justify-center items-center text-base font-bold border-l-2 pl-3 '>
-                 <NavLink style={navbarStyle} to='/'>Home</NavLink> 
-            </div>
-            <div className='hover:text-black text-gray-200  flex justify-center items-center text-base font-bold border-l-2 pl-3 '> 
-                <NavLink style={navbarStyle}  to='/news'>News</NavLink> 
-            </div>
-            <div className='hover:text-black text-gray-200  flex justify-center items-center text-base font-bold border-l-2 pl-3 '> 
-                <NavLink style={navbarStyle}  to='/business'>Business</NavLink> 
-            </div>
-            <div className='hover:text-black text-gray-200  flex justify-center items-center text-base font-bold border-l-2 pl-3 '> 
-                <NavLink style={navbarStyle}  to='/sports'>Sports</NavLink> 
-            </div>
-            <div className='hover:text-black text-gray-200  flex justify-center items-center text-base font-bold border-l-2 pl-3 '> 
-                <NavLink style={navbarStyle}  to='/entertainment'>Entertainment</NavLink>
-            </div>
-        </Box>
-        
-        <Box className='lg-1/6 flex items-end justify-end'>
-            icons
-        </Box>
-
+    <Box className="w-full" >
+      <Box className="w-full flex items-center px-44 bg-red-600 justify-around h-16 ">
+        <div className='w-4/6 flex justify-between items-center'>
+          <div className='flex w-1/8'>
+            <span className='font-black text-white text-4xl'>Logo</span>
+          </div>
+          <nav className='flex justify-between items-center h-7/8 text-white font-semibold '>
+            <NavLink className='mr-5 px-4 py-2 font-semibold font-sans text-md '>Home</NavLink>
+            <NavLink className='mr-5 px-4 py-2 font-semibold font-sans text-md'>News</NavLink>
+            <NavLink className='mr-5 px-4 py-2 font-semibold font-sans text-md'>Sports</NavLink>
+            <NavLink className='mr-5 px-4 py-2 font-semibold font-sans text-md'>Business</NavLink>
+            <NavLink className='mr-5 px-4 py-2 font-semibold font-sans text-md'>Intertainment</NavLink>
+          </nav>
+        </div>
+        <div className='w-2/6 flex justify-end items-end' >
+          {search?<SearchIcon className='text-white cursor-pointer transition-all ease-in' onClick={handleClick}/>:
+          <div className='w-full px-3 py-1 rounded-lg bg-white flex space-x-2'>
+            <input className='w-full border-none outline-0 ' type='text'/>
+            <span onClick={handleClick} className='text-red-600 font-bold text-lg cursor-pointer border-l-2 border-red-600' >X</span>
+          </div>
+          }
+        </div>
+      </Box>
     </Box>
-    </div>
   )
 }
 

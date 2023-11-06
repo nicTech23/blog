@@ -9,12 +9,12 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
     const status = useSelector((state)=> state.allPostData[storyCat].status)
     
     const dispatch = useDispatch()
-    console.log(status)
+    console.log('ss', data)
     //Function to get only crime stories
     const returnFiltterData = ()=>{
       if(data){
         console.log(data)
-        const newdata = data.filter(item => item.category.some(category => category.storytypes.includes(storyType) && category.name === storyCat));
+        const newdata = data.filter(item => item.type === storyType);
         return newdata
       }
     }
@@ -36,19 +36,26 @@ const StoryBoxs = ({storyType, fetch, storyCategory}) => {
       <Box className='w-full grid lg:grid-cols-4 gap-4 sm:grid-cols-2'>
             {
               filterData?.map(data =>{
-                let url = `/${data.category[0].name}/${data.category[0].mainstory}/${data.title}`
+                let url = `/${data.category}/${data.type}/${data.title}`
                 return(
                   <Link key={data._id} to={url}>
 
-                    <Box className='bg-gray-200 cursor-pointer h-64 overflow-hidden hover:bg-red-600 hover:text-white trasnsition ease-in-out'>
-                        <CardMedia className=''sx={{height:170, objectFit:'cover'}}
+                    <Box className='bg-gray-200 cursor-pointer h-64 overflow-hidden hover:bg-red-600 hover:text-white trasnsition ease-in-out flex flex-col justify-around'>
+                        {/* <CardMedia className=''sx={{height:170, objectFit:'cover'}}
                                     component="img"
-                                    image="https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg"
+                                    image={`http://localhost:8080/image/${data.image}`}
                                     alt="green iguana"
-                                    />
+                                    /> */}
+                        <Box className='w-full cursor-pointer h-[150px] '>
+                          <img className='object-fill h-full w-full' src={`http://localhost:8080/image/${data.image}`}/>
+                        </Box>
 
-                        <Box  className='m-3 overflow-hidden'>
-                          <span className='text-sm'>{data.content}</span>
+                        <Box  className='px-3'>
+                          <span className='text-lg font-bold mt-3'>{data.title.split('-').join(' ')}</span>
+                        </Box>
+
+                        <Box  className=' px-3 mb-5'>
+                          <span className='text-base' dangerouslySetInnerHTML={{__html: data.content.substring(0,100)}}/>
                         </Box>
 
                     </Box>

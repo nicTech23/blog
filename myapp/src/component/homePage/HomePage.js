@@ -18,7 +18,7 @@ const HomePage = () => {
   };
 
   return (
-    <Box className='' sx={{width:"100%"}}>
+    <Box className=' bg-gray-100' sx={{width:"100%"}}>
       <Header2/>
       <Box className='flex flex-row relative  w-full' sx={{width:"100%", paddingLeft:{xs:"0px", lg:"10rem"}, paddingRight:{xs:"0px", lg:"10rem"} }}>
         <Content/>
