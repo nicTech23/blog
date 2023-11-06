@@ -40,21 +40,18 @@ const SinglePage = () => {
       GetData()
   }, [dispatch, loading])
 
-  console.log(data)
   return (
     <Box>
       <Header2/>
-
-        <Box className='w-full flex flex-row justify-center pl-14 pr-14 sm:pl-0 sm:pr-0'sx={{paddingLeft:{xs:'2px', lg:'3.5rem'}, paddingRight:{xs:'2px', lg:'3.5rem'}}} > 
+        <Box className='w-full flex flex-row justify-center pl-14 pr-14 sm:pl-0 sm:pr-0'sx={{paddingLeft:{xs:'2px', lg:'7rem'}, paddingRight:{xs:'2px', lg:'7rem'}}} > 
           {/* {data ? <div dangerouslySetInnerHTML={{__html: data.data.content}}/>: null} */}
-          <Box className='w-7/ pr-14 sm:pr-5 sm:w-full' sx={{paddingLeft:{xs:'2px'}, paddingRight:{xs:'2px', lg:"3.5rem"}, width:{xs:'90%', lg:"100%"}}}>
-            {data && data.data && data.data.title ? <div className='text-3xl capitalize font-black, font-sans' dangerouslySetInnerHTML={{__html: data.data.title.split('-').join(' ')}}/>: null} 
+          
+          <Box className='w-7/12 pr-14 sm:pr-5 sm:w-full' sx={{paddingLeft:{xs:'2px'}, paddingRight:{xs:'2px', lg:"3.5rem"}, width:{xs:'90%', lg:"100%"}}}>
+            {data && data.data && data.data.title ? <div className='text-3xl capitalize font-black, font-sans' dangerouslySetInnerHTML={{__html: data.data.title.split('-').join(' ')}}/>:null} 
               
-              <CardMedia className='rounded-2xl w-full overflow-hidden mt-5 mb-5' sx={{objectFit:'cover', height:{xs:'400px', lg:'500px'}}}
-                          component="img"
-                          image="https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg"
-                          alt="green iguana"
-                          />
+                <Box className='rounded-xl w-full  mt-5 mb-5 h-[500px]' >
+                    <img className=' w-full h-full object-fill rounded-xl' src={`http://localhost:8080/image/${data.data.image}`}/>
+                </Box>
 
                 {data ? <Typography className='text text-justify' dangerouslySetInnerHTML={{__html: data.data.content}}/>: null}
               

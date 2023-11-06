@@ -194,7 +194,7 @@ const singledata = async (req, res) => {
     await PostModel.find({category:category})
         .then((response)=>{
            const data = response.filter(data => data.title === title)
-           return res.json({title: data.title, image:data[0].image,
+           return res.json({title: data[0].title, image:data[0].image,
              content:data[0].content, id: data[0]._id, comment:data[0].comment})
         })
         .catch(err => res.status(501).json(err.message))

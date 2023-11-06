@@ -2,7 +2,7 @@ import { Box, Card, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPopular } from '../redux/createSlice/populaSlice'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const SidebarRight = () => {
   const data = useSelector((state)=> state.popular.data.data)
@@ -23,13 +23,13 @@ const SidebarRight = () => {
       
       <Box className='grid lg:grid-cols-1 justify-center w-full pr-3'>
         {data ? data.map((data) =>{
-          let url = `/${data.category}/${data.type}/${data.title}`
+       
           return (
-            <Link key={data._id} to={url}>
+            <a key={data._id} href={`/${data.category}/${data.type}/${data.title}`}>
               <Card className='p-4 flex flex-row sm:full cursor-pointer mt-3 w-full'>
                 
-                <Box className='w-2/6 h-full bg-green-500 flex justify-center rounded-lg'>
-                    <img className='w-full h-full rounded-lg' src='https://www.graphic.com.gh/images/2022/jan/04/akufo_addo1.jpg'/>
+                <Box className='w-2/6 h-[100px] bg-green-500 flex justify-center rounded-lg'>
+                    <img className='w-full h-full rounded-lg object-cover' src={`http://localhost:8080/image/${data.image}`}/>
                 </Box>
 
                 <Box className='w-4/6 h-full pl-3 '>
@@ -40,7 +40,7 @@ const SidebarRight = () => {
                 </Box>
 
             </Card>
-            </Link>
+            </a>
           )
         }):null}
         
